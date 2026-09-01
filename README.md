@@ -1,0 +1,192 @@
+# 和の響 公式ウェブサイト
+
+野田市を拠点に活動する音楽グループ「和の響」の紹介サイトです。  
+HTML / CSS / JavaScript のみの**静的サイト**なので、GitHub Pages にそのまま公開できます。
+
+## ファイルの場所
+
+```
+├── index.html      … 文章・活動カード・各セクション
+├── style.css       … 見た目（色・レイアウト）
+├── script.js       … メニュー・写真の有無・カレンダー・フォーム
+├── images/         … 写真を入れるフォルダ
+│   ├── hero.jpg
+│   ├── activity1.jpg
+│   ├── activity2.jpg
+│   ├── activity3.jpg
+│   ├── koto.jpg
+│   ├── taishogoto.jpg
+│   ├── shakuhachi.jpg
+│   ├── shinobue.jpg
+│   └── percussion.jpg
+└── README.md       … この説明
+```
+
+写真がまだ無いときは、サイト上に「写真を掲載予定」と出ます。  
+**同じファイル名**で `images` に写真を入れると、自動的に写真が表示されます。
+
+---
+
+## 写真を変更・追加する方法
+
+1. 写真ファイルを用意します（JPEG が扱いやすいです。PNG でも可）。
+2. ファイル名を、次のいずれか**完全に同じ名前**にします。
+
+| 場所 | ファイル名 |
+| --- | --- |
+| トップの大きな写真 | `images/hero.jpg` |
+| 活動1 | `images/activity1.jpg` |
+| 活動2 | `images/activity2.jpg` |
+| 活動3 | `images/activity3.jpg` |
+| 琴 | `images/koto.jpg` |
+| 大正琴 | `images/taishogoto.jpg` |
+| 尺八 | `images/shakuhachi.jpg` |
+| 篠笛 | `images/shinobue.jpg` |
+| パーカッション | `images/percussion.jpg` |
+
+3. `images` フォルダへ上書き保存します。
+4. ブラウザを再読み込み（更新）すると反映されます。
+
+PNG を使いたい場合は、`index.html` の `src="./images/hero.jpg"` を `src="./images/hero.png"` に変えて、ファイル名も合わせてください。
+
+---
+
+## 活動日を変更する方法
+
+`index.html` の「活動内容・演奏実績」セクションで、各カードの次の行を探します。
+
+```html
+<time datetime="2026-01-01">2026年〇月〇日</time>
+```
+
+- 画面に出る日付は、`>2026年〇月〇日<` の部分です。例：`2026年4月12日`
+- `datetime="2026-01-01"` は機械向けの日付です。分かれば `datetime="2026-04-12"` のように直してください。
+
+練習日のルール（毎月第2・第4日曜日）は、`script.js` のカレンダーが自動で色付けします。場所や曜日の説明文を変えるときは、`index.html` の「活動場所・練習日」内の文章を編集します。
+
+---
+
+## 活動内容を追加する方法
+
+1. `index.html` の `article class="card activity-card"` を **1つまるごとコピー**します。
+2. 貼り付けたカードで、次を書き換えます。
+   - 見出し（`<h3>`）
+   - 日付（`<time>`）
+   - 説明文
+   - 写真パス（例：`./images/activity4.jpg`）
+3. 新しい写真があれば `images/activity4.jpg` として保存します。
+
+カードが横に3つ並ぶレイアウトです。4つ目以降は画面幅に応じて折り返されます。列の数を変えたい場合は `style.css` の `.activities-grid` を調整します。
+
+---
+
+## 文章を変更する方法
+
+ほとんどの文章は **`index.html` をメモ帳や VS Code で開いて直接書き換え**ます。
+
+| 変えたい内容 | 探す場所 |
+| --- | --- |
+| グループ名 | タイトル、ヘッダー、Hero の `<h1>` |
+| キャッチコピー | Hero の `.hero-lead` |
+| 紹介文 | `#about` セクション |
+| 代表者名 | 「代表」の `<dd>吉田</dd>` |
+| 楽器の説明 | `#instruments` の各カード |
+| お問い合わせ文 | `#contact` セクション |
+
+見た目の色を変えたいときは `style.css` の先頭 `:root` に色の名前があります。
+
+---
+
+## お問い合わせフォームの設定
+
+GitHub Pages にはメール送信機能が無いため、**無料の外部サービス**を使います。
+
+### Formspree を使う場合（おすすめ）
+
+1. [Formspree](https://formspree.io/) で無料アカウントを作り、フォームを作成します。
+2. 発行された URL（例：`https://formspree.io/f/xxxxxxxx`）を控えます。
+3. `index.html` のフォームを次のように直します。
+
+```html
+<!-- ここにフォームサービスのURLを設定してください -->
+<form
+  class="contact-form"
+  id="contact-form"
+  action="https://formspree.io/f/xxxxxxxx"
+  method="POST"
+>
+```
+
+`action="#"` のままでは送信されず、画面に設定案内が出ます。
+
+### Google フォームを使う場合
+
+Google フォームを作成し、「送信」画面の埋め込み用 HTML を、今の `<form>...</form>` の代わりに貼り付けます。
+
+---
+
+## GitHub Pages で公開する手順（初心者向け）
+
+パソコンに Git が入っていなくても、GitHub のウェブサイトだけで公開できます。
+
+### 1. GitHub アカウントを用意する
+
+[https://github.com/](https://github.com/) でアカウントを作成（またはログイン）します。
+
+### 2. 新しいリポジトリを作る
+
+1. 右上の 「+」→ **New repository**
+2. Repository name を決めます（例：`wanohibiki`）
+3. Public を選びます
+4. **Create repository** をクリックします  
+   （README を自動作成するチェックは、空のリポジトリなら外して問題ありません）
+
+### 3. ファイルをアップロードする
+
+1. できたリポジトリ画面で **uploading an existing file**（または Add file → Upload files）
+2. 次のファイル・フォルダをまとめてドラッグします  
+   `index.html` / `style.css` / `script.js` / `README.md` / `images` フォルダ
+3. **Commit changes** で保存します
+
+`images` に写真が無くてもサイトは表示されます。後から同じ画面で写真を追加できます。
+
+### 4. GitHub Pages を有効にする
+
+1. リポジトリの **Settings**
+2. 左メニューの **Pages**
+3. Build and deployment の Source で **Deploy from a branch**
+4. Branch を `main`（または `master`）、フォルダは `/ (root)` にして **Save**
+
+数分待つと、次のような URL が表示されます。
+
+`https://（アカウント名）.github.io/（リポジトリ名）/`
+
+例：アカウントが `yoshida`、リポジトリが `wanohibiki` なら  
+`https://yoshida.github.io/wanohibiki/`
+
+### 5. 公開後に直した内容を反映する
+
+GitHub のリポジトリでファイルを開き **鉛筆アイコン（Edit）** で編集するか、Upload files で上書きします。保存後、1〜2分でサイトに反映されることが多いです。
+
+### うまく表示されないとき
+
+- CSS や写真が出ない → ファイルがリポジトリの**一番上**（`index.html` と同じ階層）にあるか確認してください。入れ子のフォルダだけアップロードするとパスがずれます。
+- 写真だけ出ない → ファイル名が `activity1.jpg` のように、HTML と**大文字小文字まで一致**しているか確認してください。
+- 古い画面のまま → ブラウザを再読み込みするか、シークレットウィンドウで開いてください。
+
+---
+
+## ローカルで確認する方法
+
+1. `index.html` をブラウザにドラッグして開くだけでも確認できます。
+2. 写真の有無やメニューは、そのままで動作します。
+
+---
+
+## 活動情報（サイト掲載内容）
+
+- グループ名：和の響
+- 代表：吉田
+- 活動場所：野田市公民館
+- 活動日時：毎月第二・第四日曜日
+- 楽器：琴、大正琴、尺八、篠笛、パーカッション
