@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="野田市を拠点に活動する音楽グループ「和の響」。琴・大正琴・尺八・篠笛・パーカッションによる日本の伝統的な音色を、グループホームや地域イベントへお届けします。">
+  <title>和の響｜日本の伝統楽器が奏でる、心に響く音色</title>
+  <!-- 相対パス：GitHub Pages でも CSS が読み込まれるように ./ を付けています -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ========== ヘッダー（画面上部に固定） ========== -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="ページ先頭へ">
+        <span class="logo-mark" aria-hidden="true">和</span>
+        <span class="logo-text">和の響</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="#top">ホーム</a></li>
+          <li><a href="#about">和の響について</a></li>
+          <li><a href="#activities">活動内容</a></li>
+          <li><a href="#instruments">楽器</a></li>
+          <li><a href="#schedule">活動場所</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== 1. Hero（トップ） ========== -->
+    <!-- 写真を差し替える場合：images/hero.jpg を置き換えてください -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-kicker">野田市　伝統楽器の音楽グループ</p>
+        <h1 id="hero-title" class="hero-title">和の響</h1>
+        <p class="hero-lead">日本の伝統楽器が奏でる、<br>心に響く音色</p>
+        <p class="hero-sub">琴・大正琴・尺八・篠笛・パーカッション</p>
+
+        <figure class="hero-photo">
+          <img
+            src="./images/hero.jpg"
+            alt="和の響の演奏風景"
+            data-fallback="photo"
+          >
+          <figcaption class="photo-placeholder">演奏写真を掲載予定</figcaption>
+        </figure>
+
+        <!-- 下層セクションへの案内（ヘッダーナビとは別に、トップからも移動できるように） -->
+        <nav class="hero-jump" aria-label="ページ内案内">
+          <a href="#about">和の響について</a>
+          <a href="#activities">活動内容</a>
+          <a href="#schedule">活動場所・練習日</a>
+          <a href="#instruments">楽器紹介</a>
+          <a href="#contact">演奏依頼</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ========== 2. 和の響について ========== -->
+    <!-- 文章を変更する場合：このセクション内の <p> を編集してください -->
+    <section class="section about" id="about">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">About</p>
+          <h2>和の響について</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="about-layout">
+          <div class="about-copy">
+            <p>
+              和の響は、琴、大正琴、尺八、篠笛、パーカッションなど、日本の伝統楽器を中心に演奏活動を行っている音楽グループです。
+            </p>
+            <p>
+              地域の皆さまに、日本の伝統的な音色を身近に楽しんでいただけるよう、グループホームや地域イベントなどで演奏しています。落ち着いた和の響きが、会場にやさしい時間をお届けできれば幸いです。
+            </p>
+            <dl class="info-list">
+              <div>
+                <dt>グループ名</dt>
+                <dd>和の響</dd>
+              </div>
+              <!-- 代表者名を変更する場合：次の dd を編集 -->
+              <div>
+                <dt>代表</dt>
+                <dd>吉田</dd>
+              </div>
+              <div>
+                <dt>活動の場</dt>
+                <dd>グループホーム、地域イベント、公民館 ほか</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3. 活動内容・演奏実績 ========== -->
+    <!--
+      活動を追加する方法：
+      下の article.activity-card をコピーし、
+      タイトル・日付・本文・画像パス（images/activity4.jpg など）を書き換えます。
+    -->
+    <section class="section activities" id="activities">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Activities</p>
+          <h2>活動内容・演奏実績</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+          <p class="section-lead">施設や地域の場で、和の音色をお届けしています。</p>
+        </header>
+
+        <div class="card-grid activities-grid">
+          <!-- 活動1：日付を変えるときは <time> の中と datetime を編集 -->
+          <article class="card activity-card">
+            <div class="card-photo">
+              <img src="./images/activity1.jpg" alt="グループホームでの演奏の様子" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <p class="card-label">演奏活動</p>
+              <h3>グループホームでの演奏</h3>
+              <p class="card-date">
+                <!-- ▼ 活動日はここを変更（表示用） -->
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>地域のグループホームを訪問し、琴や尺八などの音色で、ご利用者の皆さまと楽しいひとときを過ごしました。</p>
+            </div>
+          </article>
+
+          <!-- 活動2 -->
+          <article class="card activity-card">
+            <div class="card-photo">
+              <img src="./images/activity2.jpg" alt="野田市産業祭での演奏の様子" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <p class="card-label">地域イベント</p>
+              <h3>野田市産業祭</h3>
+              <p class="card-date">
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>野田市産業祭にて演奏を行い、訪れた皆さまに日本の伝統楽器の響きをお届けしました。</p>
+            </div>
+          </article>
+
+          <!-- 活動3 -->
+          <article class="card activity-card">
+            <div class="card-photo">
+              <img src="./images/activity3.jpg" alt="グループホームでの演奏の様子" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <p class="card-label">演奏活動</p>
+              <h3>グループホームでの演奏</h3>
+              <p class="card-date">
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>グループホームにて、親しみやすい曲と落ち着いた和の調べを織り交ぜたプログラムで演奏しました。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 4. 楽器紹介 ========== -->
+    <!-- 楽器写真：images/koto.jpg などを同じファイル名で上書きしてください -->
+    <section class="section instruments" id="instruments">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Instruments</p>
+          <h2>楽器紹介</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+          <p class="section-lead">日本の伝統楽器を中心に、温かみのある合奏をお届けします。</p>
+        </header>
+
+        <div class="card-grid instruments-grid">
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <img src="./images/koto.jpg" alt="琴" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>琴</h3>
+              <p>十三弦の箏。澄んだ高音から深い低音まで、心をほどくような広がりのある響きが特長です。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <img src="./images/taishogoto.jpg" alt="大正琴" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>大正琴</h3>
+              <p>親しみやすい音色の撥弦楽器。旋律をやさしく支え、聴く人の記憶に残るメロディを奏でます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <img src="./images/shakuhachi.jpg" alt="尺八" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>尺八</h3>
+              <p>竹の縦笛。息づかいがそのまま音になる、奥行きのある響きで、場の空気をそっと整えます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <img src="./images/shinobue.jpg" alt="篠笛" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>篠笛</h3>
+              <p>祭や民謡でも親しまれる横笛。明るく通りのよい音色が、合奏に彩りを添えます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <img src="./images/percussion.jpg" alt="パーカッション" data-fallback="photo">
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>パーカッション</h3>
+              <p>太鼓などの打楽器。穏やかなリズムで演奏を支え、会場に温かみと一体感をもたらします。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. 活動場所・練習日 ========== -->
+    <section class="section schedule" id="schedule">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Practice</p>
+          <h2>活動場所・練習日</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="schedule-layout">
+          <div class="schedule-info">
+            <dl class="info-list">
+              <div>
+                <dt>活動場所</dt>
+                <dd>野田市公民館</dd>
+              </div>
+              <div>
+                <dt>活動日時</dt>
+                <dd>毎月第二・第四日曜日</dd>
+              </div>
+            </dl>
+            <p class="schedule-note">
+              毎月<strong>第2日曜日</strong>と<strong>第4日曜日</strong>に活動しています。<br>
+              カレンダーの金色の日が、活動日の目安です。
+            </p>
+          </div>
+
+          <!-- カレンダーは script.js が今月・来月を描画します（第2・第4日曜を強調） -->
+          <div class="calendars" id="calendars" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 6. 演奏依頼・お問い合わせ ========== -->
+    <section class="section contact" id="contact">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Contact</p>
+          <h2>演奏依頼・お問い合わせ</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="contact-intro">
+          <p>和の響では、地域のイベントや施設などでの演奏依頼を承っています。</p>
+          <p>琴、大正琴、尺八、篠笛、パーカッションなどによる、和の音色をお届けします。</p>
+          <p>演奏についてのお問い合わせは、お気軽にご連絡ください。</p>
+          <ul class="contact-tags">
+            <li>グループホーム</li>
+            <li>介護施設</li>
+            <li>地域イベント</li>
+            <li>自治会</li>
+            <li>地域のお祭り</li>
+          </ul>
+        </div>
+
+        <!--
+          【重要】GitHub Pages は静的サイトのため、フォーム送信には外部サービスが必要です。
+          ここにフォームサービスのURLを設定してください。
+          例（Formspree）：action="https://formspree.io/f/xxxxxxxx" method="POST"
+          例（Googleフォーム）：下の form の代わりに iframe を埋め込みます。詳しくは README.md をご覧ください。
+        -->
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="#"
+          method="POST"
+        >
+          <p class="form-notice" id="form-notice" hidden>
+            フォーム送信先がまだ設定されていません。README.md の手順に沿って、Formspree などのURLを <code>action</code> に記入してください。
+          </p>
+
+          <label>
+            お名前
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label>
+            メールアドレス
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+          <label>
+            ご所属・団体名（任意）
+            <input type="text" name="organization" autocomplete="organization">
+          </label>
+          <label>
+            ご希望の内容
+            <select name="topic">
+              <option value="演奏依頼">演奏依頼</option>
+              <option value="活動について">活動について</option>
+              <option value="その他">その他</option>
+            </select>
+          </label>
+          <label>
+            メッセージ
+            <textarea name="message" rows="6" required placeholder="ご希望の日時、会場、人数などが分かればご記入ください。"></textarea>
+          </label>
+          <button type="submit" class="btn-gold">送信する</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">和の響</p>
+      <p>日本の伝統楽器が奏でる、心に響く音色</p>
+      <p class="footer-copy">活動場所：野田市公民館　／　毎月第二・第四日曜日</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+
