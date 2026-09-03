@@ -1,228 +1,359 @@
-# 和の響 公式ウェブサイト
-
-野田市を拠点に活動する音楽グループ「和の響」の紹介サイトです。  
-HTML / CSS / JavaScript のみの**静的サイト**なので、GitHub Pages にそのまま公開できます。
-
-## ファイルの場所
-
-```
-├── index.html      … 文章・活動カード・各セクション
-├── style.css       … 見た目（色・レイアウト）
-├── script.js       … メニュー・写真の有無・拡大表示・カレンダー・フォーム
-├── images/         … 写真を入れるフォルダ
-│   ├── hero.jpg
-│   ├── activity1-1.jpg   （活動1の1枚目。2枚目は activity1-2.jpg）
-│   ├── activity2-1.jpg
-│   ├── activity3-1.jpg
-│   ├── koto.jpg
-│   ├── taishogoto.jpg
-│   ├── shakuhachi.jpg
-│   ├── shinobue.jpg
-│   └── percussion.jpg
-└── README.md       … この説明
-```
-
-写真がまだ無いときは、サイト上に「写真を掲載予定」と出ます。  
-**HTML に書いてあるファイル名**で `images` に写真を入れると、自動的に写真側が表示されます。  
-写真をクリックすると、大きく表示されます。
-
----
-
-## 写真を変更・追加する方法
-
-写真はすべて **`images` フォルダ** に入れます。  
-GitHub Pages では、画像パスは **`./images/ファイル名`**（相対パス）にしてください。先頭を `/` にすると写真が出ません。
-
-### 活動内容の写真（いちばんよく使う）
-
-編集するファイルは **`index.html`** だけです。
-
-1. 写真を `images` フォルダに入れる（例：`activity1-1.jpg`、`activity1-2.jpg`）。
-2. `index.html` を開き、「活動内容・演奏実績」を探す。
-3. イベントごとにコメントが付いています。
-
-| 活動 | 探すべきコメント | 1枚目のファイル名 |
-| --- | --- | --- |
-| 活動1 グループホーム | `活動1：グループホームでの演奏` | `./images/activity1-1.jpg` |
-| 活動2 野田市産業祭 | `活動2：野田市産業祭` | `./images/activity2-1.jpg` |
-| 活動3 グループホーム | `活動3：グループホームでの演奏` | `./images/activity3-1.jpg` |
-
-**1枚目を掲載する**ときは、次の2か所を同じファイル名にします。
-
-```html
-<a class="gallery-item" href="./images/activity1-1.jpg" data-lightbox>
-  <img src="./images/activity1-1.jpg" alt="グループホームでの演奏の様子" data-fallback="photo">
-</a>
-```
-
-- `href` … クリックして大きく表示するときの写真
-- `src` … カードに小さく表示する写真  
-両方とも同じファイルを指定します。
-
-**2枚目以降を足す**ときは、同じ活動カードの中にある「写真を追加する例」のコメントを外すか、上の `<a class="gallery-item"> ... </a>` をコピーして、ファイル名だけ変えます。
-
-```html
-<a class="gallery-item" href="./images/activity1-2.jpg" data-lightbox>
-  <img src="./images/activity1-2.jpg" alt="グループホームでの演奏の様子（2枚目）" data-fallback="photo">
-</a>
-```
-
-ファイル名は自由です。`sangyosai-01.jpg` のように分かりやすい名前に変えても構いません。そのときは **フォルダ内の名前** と **HTML の `href` / `src`** を必ず揃えてください。
-
-### トップ写真・楽器写真
-
-同じファイル名で `images` に入れるか、`index.html` の `src` と `href` を書き換えます。
-
-| 場所 | ファイル名 |
-| --- | --- |
-| トップの大きな写真 | `images/hero.jpg` |
-| 琴 | `images/koto.jpg` |
-| 大正琴 | `images/taishogoto.jpg` |
-| 尺八 | `images/shakuhachi.jpg` |
-| 篠笛 | `images/shinobue.jpg` |
-| パーカッション | `images/percussion.jpg` |
-
-PNG を使う場合は、拡張子を `.png` に合わせて `index.html` も直してください。
-
----
-
-## 活動日を変更する方法
-
-`index.html` の「活動内容・演奏実績」セクションで、各カードの次の行を探します。
-
-```html
-<time datetime="2026-01-01">2026年〇月〇日</time>
-```
-
-- 画面に出る日付は、`>2026年〇月〇日<` の部分です。例：`2026年4月12日`
-- `datetime="2026-01-01"` は機械向けの日付です。分かれば `datetime="2026-04-12"` のように直してください。
-
-練習日のルール（毎月第2・第4日曜日）は、`script.js` のカレンダーが自動で色付けします。場所や曜日の説明文を変えるときは、`index.html` の「活動場所・練習日」内の文章を編集します。
-
----
-
-## 活動内容を追加する方法
-
-1. `index.html` の `article class="card activity-card"` を **1つまるごとコピー**します。
-2. 貼り付けたカードで、次を書き換えます。
-   - 見出し（`<h3>`）
-   - 日付（`<time>`）
-   - 説明文
-   - 写真パス（例：`./images/activity4-1.jpg`）
-3. 新しい写真があれば `images/activity4-1.jpg` として保存します。
-4. 同じイベントに写真を足すときは、`<a class="gallery-item">` を増やします。
-
-カードが横に3つ並ぶレイアウトです。4つ目以降は画面幅に応じて折り返されます。列の数を変えたい場合は `style.css` の `.activities-grid` を調整します。
-
----
-
-## 文章を変更する方法
-
-ほとんどの文章は **`index.html` をメモ帳や VS Code で開いて直接書き換え**ます。
-
-| 変えたい内容 | 探す場所 |
-| --- | --- |
-| グループ名 | タイトル、ヘッダー、Hero の `<h1>` |
-| キャッチコピー | Hero の `.hero-lead` |
-| 紹介文 | `#about` セクション |
-| 代表者名 | 「代表」の `<dd>吉田</dd>` |
-| 楽器の説明 | `#instruments` の各カード |
-| お問い合わせ文 | `#contact` セクション |
-
-見た目の色を変えたいときは `style.css` の先頭 `:root` に色の名前があります。
-
----
-
-## お問い合わせフォームの設定
-
-GitHub Pages にはメール送信機能が無いため、**無料の外部サービス**を使います。
-
-### Formspree を使う場合（おすすめ）
-
-1. [Formspree](https://formspree.io/) で無料アカウントを作り、フォームを作成します。
-2. 発行された URL（例：`https://formspree.io/f/xxxxxxxx`）を控えます。
-3. `index.html` のフォームを次のように直します。
-
-```html
-<!-- ここにフォームサービスのURLを設定してください -->
-<form
-  class="contact-form"
-  id="contact-form"
-  action="https://formspree.io/f/xxxxxxxx"
-  method="POST"
->
-```
-
-`action="#"` のままでは送信されず、画面に設定案内が出ます。
-
-### Google フォームを使う場合
-
-Google フォームを作成し、「送信」画面の埋め込み用 HTML を、今の `<form>...</form>` の代わりに貼り付けます。
-
----
-
-## GitHub Pages で公開する手順（初心者向け）
-
-パソコンに Git が入っていなくても、GitHub のウェブサイトだけで公開できます。
-
-### 1. GitHub アカウントを用意する
-
-[https://github.com/](https://github.com/) でアカウントを作成（またはログイン）します。
-
-### 2. 新しいリポジトリを作る
-
-1. 右上の 「+」→ **New repository**
-2. Repository name を決めます（例：`wanohibiki`）
-3. Public を選びます
-4. **Create repository** をクリックします  
-   （README を自動作成するチェックは、空のリポジトリなら外して問題ありません）
-
-### 3. ファイルをアップロードする
-
-1. できたリポジトリ画面で **uploading an existing file**（または Add file → Upload files）
-2. 次のファイル・フォルダをまとめてドラッグします  
-   `index.html` / `style.css` / `script.js` / `README.md` / `images` フォルダ
-3. **Commit changes** で保存します
-
-`images` に写真が無くてもサイトは表示されます。後から同じ画面で写真を追加できます。
-
-### 4. GitHub Pages を有効にする
-
-1. リポジトリの **Settings**
-2. 左メニューの **Pages**
-3. Build and deployment の Source で **Deploy from a branch**
-4. Branch を `main`（または `master`）、フォルダは `/ (root)` にして **Save**
-
-数分待つと、次のような URL が表示されます。
-
-`https://（アカウント名）.github.io/（リポジトリ名）/`
-
-例：アカウントが `yoshida`、リポジトリが `wanohibiki` なら  
-`https://yoshida.github.io/wanohibiki/`
-
-### 5. 公開後に直した内容を反映する
-
-GitHub のリポジトリでファイルを開き **鉛筆アイコン（Edit）** で編集するか、Upload files で上書きします。保存後、1〜2分でサイトに反映されることが多いです。
-
-### うまく表示されないとき
-
-- CSS や写真が出ない → ファイルがリポジトリの**一番上**（`index.html` と同じ階層）にあるか確認してください。入れ子のフォルダだけアップロードするとパスがずれます。
-- 写真だけ出ない → ファイル名が `activity1-1.jpg` のように、HTML と**大文字小文字まで一致**しているか確認してください。パスが `/images/...` になっていないかも確認してください（正しくは `./images/...`）。
-- 古い画面のまま → ブラウザを再読み込みするか、シークレットウィンドウで開いてください。
-
----
-
-## ローカルで確認する方法
-
-1. `index.html` をブラウザにドラッグして開くだけでも確認できます。
-2. 写真の有無やメニューは、そのままで動作します。
-
----
-
-## 活動情報（サイト掲載内容）
-
-- グループ名：和の響
-- 代表：吉田
-- 活動場所：野田市公民館
-- 活動日時：毎月第二・第四日曜日
-- 楽器：琴、大正琴、尺八、篠笛、パーカッション
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="野田市を拠点に活動する音楽グループ「和の響」。琴・大正琴・尺八・篠笛・パーカッションによる日本の伝統的な音色を、グループホームや地域イベントへお届けします。">
+  <title>和の響｜日本の伝統楽器が奏でる、心に響く音色</title>
+  <!-- 相対パス：GitHub Pages でも CSS が読み込まれるように ./ を付けています -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ========== ヘッダー（画面上部に固定） ========== -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="ページ先頭へ">
+        <span class="logo-mark" aria-hidden="true">和</span>
+        <span class="logo-text">和の響</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="#top">ホーム</a></li>
+          <li><a href="#about">和の響について</a></li>
+          <li><a href="#activities">活動内容</a></li>
+          <li><a href="#instruments">楽器</a></li>
+          <li><a href="#schedule">活動場所</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== 1. Hero（トップ） ========== -->
+    <!-- 写真を差し替える場合：images/hero.jpg を置き換えてください -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-kicker">野田市　伝統楽器の音楽グループ</p>
+        <h1 id="hero-title" class="hero-title">和の響</h1>
+        <p class="hero-lead">日本の伝統楽器が奏でる、<br>心に響く音色</p>
+        <p class="hero-sub">琴・大正琴・尺八・篠笛・パーカッション</p>
+
+        <figure class="hero-photo">
+          <!-- トップ写真：images/hero.jpg を同じ名前で入れると表示されます -->
+          <a href="./images/hero.jpg" data-lightbox>
+            <img
+              src="./images/hero.jpg"
+              alt="和の響の演奏風景"
+              data-fallback="photo"
+            >
+          </a>
+          <figcaption class="photo-placeholder">演奏写真を掲載予定</figcaption>
+        </figure>
+
+        <!-- 下層セクションへの案内（ヘッダーナビとは別に、トップからも移動できるように） -->
+        <nav class="hero-jump" aria-label="ページ内案内">
+          <a href="#about">和の響について</a>
+          <a href="#activities">活動内容</a>
+          <a href="#schedule">活動場所・練習日</a>
+          <a href="#instruments">楽器紹介</a>
+          <a href="#contact">演奏依頼</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ========== 2. 和の響について ========== -->
+    <!-- 文章を変更する場合：このセクション内の <p> を編集してください -->
+    <section class="section about" id="about">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">About</p>
+          <h2>和の響について</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="about-layout">
+          <div class="about-copy">
+            <p>
+              和の響は、琴、大正琴、尺八、篠笛、パーカッションなど、日本の伝統楽器を中心に演奏活動を行っている音楽グループです。
+            </p>
+            <p>
+              地域の皆さまに、日本の伝統的な音色を身近に楽しんでいただけるよう、グループホームや地域イベントなどで演奏しています。落ち着いた和の響きが、会場にやさしい時間をお届けできれば幸いです。
+            </p>
+            <dl class="info-list">
+              <div>
+                <dt>グループ名</dt>
+                <dd>和の響</dd>
+              </div>
+              <!-- 代表者名を変更する場合：次の dd を編集 -->
+              <div>
+                <dt>代表</dt>
+                <dd>吉田</dd>
+              </div>
+              <div>
+                <dt>活動の場</dt>
+                <dd>グループホーム、地域イベント、公民館 ほか</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3. 活動内容・演奏実績 ========== -->
+    <!--
+      【写真の入れ方（活動内容）】
+      1. 写真ファイルを images フォルダへ入れる
+      2. 下の src="./images/ファイル名" と href="./images/ファイル名" を、入れたファイル名に合わせる
+      3. 同じイベントに写真を足すときは、<a class="gallery-item"> ... </a> をコピーして貼る
+
+      パスは必ず相対パス（./images/...）にしてください。先頭の / は付けません。
+      GitHub Pages のプロジェクトサイトでは /images/... だと写真が出ません。
+    -->
+    <section class="section activities" id="activities">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Activities</p>
+          <h2>活動内容・演奏実績</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+          <p class="section-lead">施設や地域の場で、和の音色をお届けしています。</p>
+        </header>
+
+        <div class="card-grid activities-grid">
+          <!-- ===== 活動1：グループホームでの演奏 ===== -->
+          <article class="card activity-card">
+            <div class="activity-gallery">
+              <!-- 写真1枚目：images/activity1-1.jpg -->
+              <a class="gallery-item" href="./images/activity1-1.jpg" data-lightbox>
+                <img src="./images/activity1-1.jpg" alt="グループホームでの演奏の様子" data-fallback="photo">
+              </a>
+              <!-- 写真を追加する例：下のコメントを外し、ファイル名を合わせてください
+              <a class="gallery-item" href="./images/activity1-2.jpg" data-lightbox>
+                <img src="./images/activity1-2.jpg" alt="グループホームでの演奏の様子（2枚目）" data-fallback="photo">
+              </a>
+              -->
+            </div>
+            <p class="photo-placeholder">写真を掲載予定</p>
+            <div class="card-body">
+              <p class="card-label">演奏活動</p>
+              <h3>グループホームでの演奏</h3>
+              <p class="card-date">
+                <!-- ▼ 活動日はここを変更（表示用） -->
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>地域のグループホームを訪問し、琴や尺八などの音色で、ご利用者の皆さまと楽しいひとときを過ごしました。</p>
+            </div>
+          </article>
+
+          <!-- ===== 活動2：野田市産業祭 ===== -->
+          <article class="card activity-card">
+            <div class="activity-gallery">
+              <!-- 写真1枚目：images/activity2-1.jpg -->
+              <a class="gallery-item" href="./images/activity2-1.jpg" data-lightbox>
+                <img src="./images/activity2-1.jpg" alt="野田市産業祭での演奏の様子" data-fallback="photo">
+              </a>
+              <!-- 写真を追加する例
+              <a class="gallery-item" href="./images/activity2-2.jpg" data-lightbox>
+                <img src="./images/activity2-2.jpg" alt="野田市産業祭での演奏の様子（2枚目）" data-fallback="photo">
+              </a>
+              -->
+            </div>
+            <p class="photo-placeholder">写真を掲載予定</p>
+            <div class="card-body">
+              <p class="card-label">地域イベント</p>
+              <h3>野田市産業祭</h3>
+              <p class="card-date">
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>野田市産業祭にて演奏を行い、訪れた皆さまに日本の伝統楽器の響きをお届けしました。</p>
+            </div>
+          </article>
+
+          <!-- ===== 活動3：グループホームでの演奏 ===== -->
+          <article class="card activity-card">
+            <div class="activity-gallery">
+              <!-- 写真1枚目：images/activity3-1.jpg -->
+              <a class="gallery-item" href="./images/activity3-1.jpg" data-lightbox>
+                <img src="./images/activity3-1.jpg" alt="グループホームでの演奏の様子" data-fallback="photo">
+              </a>
+              <!-- 写真を追加する例
+              <a class="gallery-item" href="./images/activity3-2.jpg" data-lightbox>
+                <img src="./images/activity3-2.jpg" alt="グループホームでの演奏の様子（2枚目）" data-fallback="photo">
+              </a>
+              -->
+            </div>
+            <p class="photo-placeholder">写真を掲載予定</p>
+            <div class="card-body">
+              <p class="card-label">演奏活動</p>
+              <h3>グループホームでの演奏</h3>
+              <p class="card-date">
+                <time datetime="2026-01-01">2026年〇月〇日</time>
+              </p>
+              <p>グループホームにて、親しみやすい曲と落ち着いた和の調べを織り交ぜたプログラムで演奏しました。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 4. 楽器紹介 ========== -->
+    <!-- 楽器写真：images/koto.jpg などを同じファイル名で上書きしてください -->
+    <section class="section instruments" id="instruments">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Instruments</p>
+          <h2>楽器紹介</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+          <p class="section-lead">日本の伝統楽器を中心に、温かみのある合奏をお届けします。</p>
+        </header>
+
+        <div class="card-grid instruments-grid">
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <a href="./images/koto.jpg" data-lightbox>
+                <img src="./images/koto.jpg" alt="琴" data-fallback="photo">
+              </a>
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>琴</h3>
+              <p>十三弦の箏。澄んだ高音から深い低音まで、心をほどくような広がりのある響きが特長です。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <a href="./images/taishogoto.jpg" data-lightbox>
+                <img src="./images/taishogoto.jpg" alt="大正琴" data-fallback="photo">
+              </a>
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>大正琴</h3>
+              <p>親しみやすい音色の撥弦楽器。旋律をやさしく支え、聴く人の記憶に残るメロディを奏でます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <a href="./images/shakuhachi.jpg" data-lightbox>
+                <img src="./images/shakuhachi.jpg" alt="尺八" data-fallback="photo">
+              </a>
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>尺八</h3>
+              <p>竹の縦笛。息づかいがそのまま音になる、奥行きのある響きで、場の空気をそっと整えます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <a href="./images/shinobue.jpg" data-lightbox>
+                <img src="./images/shinobue.jpg" alt="篠笛" data-fallback="photo">
+              </a>
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>篠笛</h3>
+              <p>祭や民謡でも親しまれる横笛。明るく通りのよい音色が、合奏に彩りを添えます。</p>
+            </div>
+          </article>
+
+          <article class="card instrument-card">
+            <div class="card-photo">
+              <a href="./images/percussion.jpg" data-lightbox>
+                <img src="./images/percussion.jpg" alt="パーカッション" data-fallback="photo">
+              </a>
+              <p class="photo-placeholder">写真を掲載予定</p>
+            </div>
+            <div class="card-body">
+              <h3>パーカッション</h3>
+              <p>太鼓などの打楽器。穏やかなリズムで演奏を支え、会場に温かみと一体感をもたらします。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. 活動場所・練習日 ========== -->
+    <section class="section schedule" id="schedule">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Practice</p>
+          <h2>活動場所・練習日</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="schedule-layout">
+          <div class="schedule-info">
+            <dl class="info-list">
+              <div>
+                <dt>活動場所</dt>
+                <dd>野田市公民館</dd>
+              </div>
+              <div>
+                <dt>活動日時</dt>
+                <dd>毎月第二・第四日曜日</dd>
+              </div>
+            </dl>
+            <p class="schedule-note">
+              毎月<strong>第2日曜日</strong>と<strong>第4日曜日</strong>に活動しています。<br>
+              カレンダーの金色の日が、活動日の目安です。
+            </p>
+          </div>
+
+          <!-- カレンダーは script.js が今月・来月を描画します（第2・第4日曜を強調） -->
+          <div class="calendars" id="calendars" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 6. 演奏依頼・お問い合わせ ========== -->
+    <section class="section contact" id="contact">
+      <div class="section-inner">
+        <header class="section-head">
+          <p class="section-en">Contact</p>
+          <h2>演奏依頼・お問い合わせ</h2>
+          <span class="gold-line" aria-hidden="true"></span>
+        </header>
+
+        <div class="contact-intro">
+          <p>和の響では、地域のイベントや施設などでの演奏依頼を承っています。</p>
+          <p>琴、大正琴、尺八、篠笛、パーカッションなどによる、和の音色をお届けします。</p>
+          <p>演奏についてのお問い合わせは、お気軽にご連絡ください。</p>
+          <ul class="contact-tags">
+            <li>グループホーム</li>
+            <li>介護施設</li>
+            <li>地域イベント</li>
+            <li>自治会</li>
+            <li>地域のお祭り</li>
+          </ul>
+        </div>
+
+        <!--
+          【重要】GitHub Pages は静的サイトのため、フォーム送信には外部サービスが必要です。
+          ここにフォームサービスのURLを設定してください。
+          例（Formspree）：action="https://formspree.io/f/xxxxxxxx" method="POST"
+          例（Googleフォーム）：下の form の代わりに iframe を埋め込みます。詳しくは README.md をご覧ください。
+        -->
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="#"
+          method="POST"
+        >
+          <p class="form-notice" id="form-notice" hidden>
+            フォーム送信先がまだ設定されていません。README.md の手順に沿って、Formspree などのURLを <code>action</code> に記入してください。
+          </p>
