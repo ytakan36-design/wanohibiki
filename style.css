@@ -648,7 +648,7 @@ h1, h2, h3, .logo-text, .hero-title, .footer-name {
 }
 
 .google-form-button-wrap {
-   tex-align: center;
+   text-align: center;
 }
 
 /* ---------- Responsive ---------- */
