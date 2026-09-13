@@ -647,6 +647,10 @@ h1, h2, h3, .logo-text, .hero-title, .footer-name {
   opacity: 0.85;
 }
 
+.google-form-button-wrap {
+   tex-align: center;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .instruments-grid {
