@@ -368,53 +368,6 @@
           >Googleフォームからお問い合わせ</a>
         </p>
 
-        <!--
-          【重要】GitHub Pages は静的サイトのため、フォーム送信には外部サービスが必要です。
-          ここにフォームサービスのURLを設定してください。
-          例（Formspree）：action="https://formspree.io/f/xxxxxxxx" method="POST"
-          例（Googleフォーム）：下の form の代わりに iframe を埋め込みます。詳しくは README.md をご覧ください。
-        -->
-        <form
-          class="contact-form"
-          id="contact-form"
-          action="#"
-          method="POST"
-        >
-          <h3 class="form-heading" data-i18n="contact.formHeading">お問い合わせフォーム</h3>
-          <p class="form-notice" id="form-notice" hidden data-i18n-html="contact.formNotice">
-            フォーム送信先がまだ設定されていません。README.md の手順に沿って、Formspree などのURLを <code>action</code> に記入してください。
-          </p>
-
-          <label>
-            <span data-i18n="form.name">お名前</span>
-            <input type="text" name="name" required autocomplete="name">
-          </label>
-          <label>
-            <span data-i18n="form.email">メールアドレス</span>
-            <input type="email" name="email" required autocomplete="email">
-          </label>
-          <label>
-            <span data-i18n="form.org">ご所属・団体名（任意）</span>
-            <input type="text" name="organization" autocomplete="organization">
-          </label>
-          <label>
-            <span data-i18n="form.topic">ご希望の内容</span>
-            <select name="topic">
-              <option value="演奏依頼" data-i18n="form.optRequest">演奏依頼</option>
-              <option value="活動について" data-i18n="form.optAbout">活動について</option>
-              <option value="その他" data-i18n="form.optOther">その他</option>
-            </select>
-          </label>
-          <label>
-            <span data-i18n="form.message">メッセージ</span>
-            <textarea name="message" rows="6" required data-i18n-placeholder="form.placeholder" placeholder="ご希望の日時、会場、人数などが分かればご記入ください。"></textarea>
-          </label>
-          <button type="submit" class="btn-gold" data-i18n="form.submit">送信する</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-name" data-i18n="brand">和の響</p>
