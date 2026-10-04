@@ -315,7 +315,7 @@ html[lang="en"] .logo-text {
 }
 
 .hero-photo img {
-  height: min(52vw, 420px);
+  height: min(52vw, 540px);
 }
 
 .hero-photo.is-empty img,
